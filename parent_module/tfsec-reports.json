@@ -1,0 +1,99 @@
+{
+	"results": [
+		{
+			"rule_id": "AVD-AZU-0039",
+			"long_id": "azure-compute-disable-password-authentication",
+			"rule_description": "Password authentication should be disabled on Azure virtual machines",
+			"rule_provider": "azure",
+			"rule_service": "compute",
+			"impact": "Using password authentication is less secure that ssh keys may result in compromised servers",
+			"resolution": "Use ssh authentication for virtual machines",
+			"links": [
+				"https://aquasecurity.github.io/tfsec/v1.28.14/checks/azure/compute/disable-password-authentication/",
+				"https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/linux_virtual_machine#disable_password_authentication",
+				"https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/virtual_machine#disable_password_authentication"
+			],
+			"description": "Linux virtual machine allows password authentication.",
+			"severity": "HIGH",
+			"warning": false,
+			"status": 0,
+			"resource": "module.vms",
+			"location": {
+				"filename": "D:\\Gautam Folder\\Terraform practice\\Module_data\\child_module\\virtual_machine\\main.tf",
+				"start_line": 11,
+				"end_line": 11
+			}
+		},
+		{
+			"rule_id": "AVD-AZU-0048",
+			"long_id": "azure-network-disable-rdp-from-internet",
+			"rule_description": "RDP access should not be accessible from the Internet, should be blocked on port 3389",
+			"rule_provider": "azure",
+			"rule_service": "network",
+			"impact": "Anyone from the internet can potentially RDP onto an instance",
+			"resolution": "Block RDP port from internet",
+			"links": [
+				"https://aquasecurity.github.io/tfsec/v1.28.14/checks/azure/network/disable-rdp-from-internet/",
+				"https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/network_security_group#security_rule",
+				"https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/network_security_rule#source_port_ranges"
+			],
+			"description": "Security group rule allows ingress to RDP port from multiple public internet addresses.",
+			"severity": "CRITICAL",
+			"warning": false,
+			"status": 0,
+			"resource": "module.nsg",
+			"location": {
+				"filename": "D:\\Gautam Folder\\Terraform practice\\Module_data\\child_module\\NSG\\main.tf",
+				"start_line": 16,
+				"end_line": 16
+			}
+		},
+		{
+			"rule_id": "AVD-AZU-0047",
+			"long_id": "azure-network-no-public-ingress",
+			"rule_description": "An inbound network security rule allows traffic from /0.",
+			"rule_provider": "azure",
+			"rule_service": "network",
+			"impact": "The port is exposed for ingress from the internet",
+			"resolution": "Set a more restrictive cidr range",
+			"links": [
+				"https://aquasecurity.github.io/tfsec/v1.28.14/checks/azure/network/no-public-ingress/",
+				"https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/network_security_rule"
+			],
+			"description": "Security group rule allows ingress from public internet.",
+			"severity": "CRITICAL",
+			"warning": false,
+			"status": 0,
+			"resource": "module.nsg",
+			"location": {
+				"filename": "D:\\Gautam Folder\\Terraform practice\\Module_data\\child_module\\NSG\\main.tf",
+				"start_line": 16,
+				"end_line": 16
+			}
+		},
+		{
+			"rule_id": "AVD-AZU-0050",
+			"long_id": "azure-network-ssh-blocked-from-internet",
+			"rule_description": "SSH access should not be accessible from the Internet, should be blocked on port 22",
+			"rule_provider": "azure",
+			"rule_service": "network",
+			"impact": "Its dangerous to allow SSH access from the internet",
+			"resolution": "Block port 22 access from the internet",
+			"links": [
+				"https://aquasecurity.github.io/tfsec/v1.28.14/checks/azure/network/ssh-blocked-from-internet/",
+				"https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/network_security_group#security_rule",
+				"https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/network_security_rule#source_port_ranges"
+			],
+			"description": "Security group rule allows ingress to SSH port from multiple public internet addresses.",
+			"severity": "CRITICAL",
+			"warning": false,
+			"status": 0,
+			"resource": "module.nsg",
+			"location": {
+				"filename": "D:\\Gautam Folder\\Terraform practice\\Module_data\\child_module\\NSG\\main.tf",
+				"start_line": 16,
+				"end_line": 16
+			}
+		}
+	]
+}

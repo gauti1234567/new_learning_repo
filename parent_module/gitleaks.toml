@@ -1,0 +1,55 @@
+title = "Terraform Hardcoded Secrets Rules"
+
+[[rules]]
+id = "terraform-admin-password"
+description = "Terraform Admin Password"
+regex = '''(?i)(admin_password|password|passwd)\s*=\s*"[^"]+"'''
+tags = ["terraform","password","credential"]
+
+[[rules]]
+id = "terraform-client-secret"
+description = "Azure Client Secret"
+regex = '''(?i)(client_secret)\s*=\s*"[^"]+"'''
+tags = ["terraform","azure","secret"]
+
+[[rules]]
+id = "terraform-storage-key"
+description = "Azure Storage Account Key"
+regex = '''(?i)(storage_account_key)\s*=\s*"[^"]+"'''
+tags = ["terraform","azure","storage"]
+
+[[rules]]
+id = "terraform-access-key"
+description = "Access Key"
+regex = '''(?i)(access_key)\s*=\s*"[^"]+"'''
+tags = ["credential"]
+
+[[rules]]
+id = "terraform-secret-key"
+description = "Secret Key"
+regex = '''(?i)(secret_key)\s*=\s*"[^"]+"'''
+tags = ["credential"]
+
+[[rules]]
+id = "terraform-api-key"
+description = "API Key"
+regex = '''(?i)(api_key)\s*=\s*"[^"]+"'''
+tags = ["apikey"]
+
+[[rules]]
+id = "terraform-token"
+description = "Token"
+regex = '''(?i)(token)\s*=\s*"[^"]+"'''
+tags = ["token"]
+
+[[rules]]
+id = "terraform-private-key"
+description = "Private Key"
+regex = '''-----BEGIN (RSA|EC|OPENSSH|PRIVATE) KEY-----'''
+tags = ["private-key"]
+
+[[rules]]
+id = "terraform-connection-string"
+description = "Connection String"
+regex = '''(?i)(connection_string)\s*=\s*"[^"]+"'''
+tags = ["connection-string"]
